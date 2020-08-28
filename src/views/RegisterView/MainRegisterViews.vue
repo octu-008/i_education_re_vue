@@ -1,15 +1,15 @@
 <template>
 <div class="main_div">
+  <register-box></register-box>
   <div class="pre_div"></div>
-  <login-box></login-box>
 </div>
 </template>
 <script>
-import LoginBox from 'views/LoginView/LoginBox'
+import RegisterBox from 'views/RegisterView/RegisterBox';
  export default {
-   name: 'MainLoginViews',
+   name: 'MainRegisterViews',
    components:{
-     LoginBox
+     RegisterBox
    }
 }
 </script>

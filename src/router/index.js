@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-const MainLoginViews = () =>import('../views/LoginView/MainLoginViews');
-const MainPageS = () => import('../views/MainPageView/MainPageS')
+const MainLoginViews = () =>import('views/LoginView/MainLoginViews');
+const MainRegisterViews = () => import('views/RegisterView/MainRegisterViews')
+const MainPageS = () => import('views/MainPageView/MainPageS')
 Vue.use(VueRouter)
 
   const routes = [
@@ -13,6 +14,12 @@ Vue.use(VueRouter)
       path: '/IEducation/login',
       name: 'MainLoginViews',
       component: MainLoginViews
+    },
+    {
+      path: '/IEducation/register',
+      name: 'MainRegisterViews',
+      component: MainRegisterViews
+
     },
     {
       path: '/IEducation/main_s',

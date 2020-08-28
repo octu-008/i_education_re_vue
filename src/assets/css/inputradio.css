@@ -1,0 +1,26 @@
+.div_radio{
+  position: relative;
+  display: block;
+
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.div_check_input{
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+}
+.div_check_label{
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 0;
+  margin-right: 0.75rem;
+}

@@ -5,7 +5,7 @@
 </div>
 </template>
 <script>
-import IeNavBar from '../components/IeNavBar';
+import IeNavBar from 'components/IeNavBar';
  export default {
    name: 'MainView',
    components:{
@@ -14,5 +14,5 @@ import IeNavBar from '../components/IeNavBar';
 }
 </script>
 <style scoped>
-@import "../assets/css/base.css";
+@import "~assets/css/base.css";
 </style>

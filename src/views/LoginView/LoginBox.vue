@@ -1,57 +1,56 @@
 <template>
-<div class="edge"> 
-  <div id="login_form">
-    <div id="form_content">
-      <div :class="content_group" class="login_tittle">
-        <label>请登录</label>
-      </div>
-      <input-with-img ref="phone" :groupMargin = "content_group" groupType="text" groupPlaceholder="手机号码">
-        <i slot="img" class="fa fa-user-circle" style="font-size: 25px"></i>
-      </input-with-img>
-      <input-with-img ref="password" :groupMargin = "content_group" groupType="password" groupPlaceholder="账号密码">
-        <i slot="img" class="fa fa-lock" style="font-size: 25px"></i>
-      </input-with-img>
-      <div class="center_div">
-        <div class="div_radio">
-          <input class="div_check_input" type="radio" value="1" v-model="type">
-          <label class="div_check_label">学生</label>
-        </div>
-        <div class="div_radio">
-          <input class="div_check_input" type="radio" value="2" v-model="type">
-          <label class="div_check_label">教师</label>
-        </div>
-      </div>
-      <hr>
-      <div class="center_div">
-        <ie-button type="btn-success" :signal="loginSubmit" @loginsubmitsignal="submit">
-          <i class="fa fa-plus-circle" style="margin-right : 1rem"></i>
-          <label style="font-size : 23px">登录</label>
-        </ie-button>
-        <ie-button type="btn-primary">
-          <label style="font-size : 23px">注册</label>
-          <i class="	fa fa-arrow-circle-right" style="margin-left : 1rem"></i>
-        </ie-button>
-      </div>
-      <div class="tips_login">
-        <label>{{tipForLogin}}</label>
-      </div>
+<ie-form-box>
+  <div :class="content_group" class="login_tittle">
+    <label>请登录</label>
+  </div>
+  <input-with-img ref="phone" :groupMargin = "content_group" groupType="text" groupPlaceholder="手机号码">
+    <i slot="img" class="fa fa-user-circle" style="font-size: 25px"></i>
+  </input-with-img>
+  <input-with-img ref="password" :groupMargin = "content_group" groupType="password" groupPlaceholder="账号密码">
+    <i slot="img" class="fa fa-lock" style="font-size: 25px"></i>
+  </input-with-img>
+  <div class="center_div">
+    <div class="div_radio">
+      <input class="div_check_input" type="radio" value="1" v-model="type">
+      <label class="div_check_label">学生</label>
+    </div>
+    <div class="div_radio">
+      <input class="div_check_input" type="radio" value="2" v-model="type">
+      <label class="div_check_label">教师</label>
     </div>
   </div>
-</div>
+  <ie-hr></ie-hr>
+  <div class="center_div">
+    <ie-button type="btn-success" :signal="loginSubmit" @loginsubmitsignal="submit">
+      <i class="fa fa-plus-circle" style="margin-right : 1rem; font-size: 20px"></i>
+      <label style="font-size : 23px">登录</label>
+    </ie-button>
+    <ie-button type="btn-primary"  :signal="toRegister" @toregistersignal="toRegisterPage">
+      <label style="font-size : 23px">注册</label>
+      <i class="	fa fa-arrow-circle-right" style="margin-left : 1rem; font-size: 20px"></i>
+    </ie-button>
+  </div>
+  <div class="tips_login">
+    <label>{{tipForLogin}}</label>
+  </div>    
+</ie-form-box>
 </template>
 <script>
-import InputWithImg from '../../components/InputWithImg'
-import IeButton from '../../components/IeButton'
+import InputWithImg from 'components/InputWithImg'
+import IeButton from 'components/IeButton'
+import IeFormBox from 'components/IeFormBox'
+import IeHr from 'components/IeHr'
  export default {
    name: 'LoginBox',
    data() {
      return {
        type: 1,
        content_group:{
-           marginBottom: '1.2rem',
+           marginBottom: '1.5rem',
        },
        loginSubmit: 'loginsubmitsignal',
-       tipForLogin: ''
+       toRegister: 'toregistersignal',
+       tipForLogin: '*若您还没有账号，可以点击进行注册*'
      }
    },
    methods:{
@@ -91,39 +90,22 @@ import IeButton from '../../components/IeButton'
            });
          }
        }
+     },
+     toRegisterPage()
+     {
+       this.$router.push('/IEducation/register');
      }
    },
    computed: {
    },
    components: {
-     InputWithImg,IeButton
+     InputWithImg,IeButton,IeFormBox,IeHr
    }
 }
 </script>
 <style scoped>
 @import url("https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css");
-.edge{
-  -ms-flex-preferred-size:0;
-  flex-basis: 0;
-  -ms-flex-positive:1;
-  flex-grow: 1;
-  max-width: 100;
-}
-#login_form{
-  display: -ms-inline-flexbox;
-  display: flex;
-  width: 80%;
-  height: 70%;
-  margin: 5rem 10%;
-    
-  border-bottom: 1px solid #dee2e6;
-
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-#form_content{
-  width: 80%;
-  margin: 1rem 10%;
-}
+@import '~assets/css/inputradio.css';
 .login_tittle
 {
   text-align: center ;
@@ -159,14 +141,8 @@ import IeButton from '../../components/IeButton'
 }
 .center_div
 {
+  margin-top: 1rem;
   text-align: center;
-}
-hr{
-  background-color:#DCDCDC;
-  height: 1px;
-  border: none;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 .tips_login
 {
@@ -174,7 +150,6 @@ hr{
   color: #dc3545;
   text-align: center;
   font-size: 17px;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 </style>

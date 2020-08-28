@@ -3,7 +3,7 @@
   <label id="tittle">{{navtittle}}</label>
   <div class="user_info" v-if="loginState">
     <label id="user_name">{{this.$store.state.userOnline.username}}</label>
-    <img :src="require('../assets/img/'+this.imgPath+'.jpg')"/>
+    <img :src="require('assets/img/'+this.imgPath+'.jpg')"/>
   </div>
 </header>
 </template>
