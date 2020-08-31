@@ -18,23 +18,34 @@
   groupPlaceholder="用户名" tipsText="*请输入1-25位用户名"
   :maxLength="usernameLimitLength.max" :minLength="usernameLimitLength.min">
   </input-with-limited>
-  <label class="type_lable">*请选择您的身份类型：</label>
-   <div class="center_div">
-    <div class="div_radio">
-      <input class="div_check_input" type="radio" value="1" v-model="type">
-      <label class="div_check_label">学生</label>
-    </div>
-    <div class="div_radio">
-      <input class="div_check_input" type="radio" value="2" v-model="type">
-      <label class="div_check_label">教师</label>
-    </div>
-   </div>
+   <b-form-group label="请选择您的身份类型：">
+     <b-form-radio-group class="text-center">
+       <b-form-radio value="1" v-model="type">学生</b-form-radio>
+       <b-form-radio value="2" v-model="type">教师</b-form-radio>
+     </b-form-radio-group>
+   </b-form-group>
   <ie-hr></ie-hr>
   <div class="center_div">
-    <ie-button type="btn-primary" :signal="registerSubmit" @registersubmitsignal="submitRegister">
-      <label style="font-size: 23px">注册</label>
-    </ie-button>
+    <b-button variant="primary" @click="registerConfirmDialog = true" style="font-size: 23px">注册
+    </b-button>
   </div>
+  <div class="text-center tips_register">
+    <label :class="tipsState">{{tipsForRegister}}</label>
+  </div>
+  <b-modal id="registerModal" hide-footer title="注册信息确认" v-model="registerConfirmDialog" no-close-on-backdrop="true">
+    <div class="d-block text-center">
+      <h3>确认要注册账号吗？</h3>
+    </div>
+    <ie-hr></ie-hr>
+    <div class="text-right">
+      <b-button variant="outline-danger" @click="registerConfirmDialog = false" style="font-size: 23px">
+        等等，未确认
+      </b-button>
+    <ie-button buttonType="primary" :signal="registerSubmit" @registersubmitsignal="submitRegister"
+    style="font-size: 23px">是的，已确认
+    </ie-button>
+    </div>
+  </b-modal>
 </ie-form-box>
 </template>
 <script>
@@ -42,6 +53,7 @@ import IeFormBox from 'components/IeFormBox'
 import InputWithLimited from 'components/InputWithLimited'
 import IeHr from 'components/IeHr'
 import IeButton from 'components/IeButton'
+import request from 'network/request.js'
  export default {
    name: 'RegisterBox',
    data() {
@@ -62,17 +74,85 @@ import IeButton from 'components/IeButton'
         max: 25,
         min: 1
       },
-      registerSubmit: 'registersubmitsignal'
+      registerSubmit: 'registersubmitsignal',
+      registerConfirmDialog: false,
+      tipsForRegister: '',
+      tipsState: 'tipState_unq'
      }
    },
    components:{
      IeFormBox,InputWithLimited,IeHr,IeButton
    },
    methods:{
+     registerSuccess()
+     {
+       this.tipsState ='tipState_pas';
+       this.tipsForRegister="*注册成功！即将返回登录页面*";
+       setTimeout( ()=>{
+         this.$router.push('/IEducation/login');
+       },3333);
+     },
+     registerFail(message)
+     {
+       this.tipsForRegister = "*注册失败！可能原因："+message+"*";
+     },
      submitRegister()
      {
-       console.log('注册');
-     }
+       this.tipsForRegister = '';
+       this.registerConfirmDialog = false;
+       let check = this.$refs.phone.isQualified();
+       if( !check )
+       {
+         this.tipsForRegister = '*手机号码的输入不符合规范*';
+       }
+       else{
+         check = this.$refs.password.isQualified();
+         if(!check)
+         {
+           this.tipsForRegister = '*密码的输入不符合规范*'
+         }
+         else{
+           if(this.$refs.password.groupValue != this.$refs.rpassword.groupValue)
+           {
+             this.tipsForRegister = '*两次密码输入不一致*'
+           }
+           else{
+             check = this.$refs.username.isQualified();
+             if(!check){
+               this.tipsForRegister = '*用户名的输入不符合规范*'
+             }
+             else{
+               let data = JSON.stringify({
+                 id:0,
+                 phone: this.$refs.phone.groupValue,
+                 username: this.$refs.username.groupValue,
+                 password: this.$refs.password.groupValue,
+                 type:this.type,
+                 mgPath:"/img/baseImg.jpg"
+               })
+               let config ={
+                 url: '/newRegister',
+                 method: 'POST',
+                 data: data,
+                 headers:{'Content-Type':'application/json;charset=UTF-8'}
+               }
+               request(config).then(res =>
+               {
+                 if(res.data.code == 200)
+                 {
+                   this.registerSuccess();
+                 }
+                 else{
+                   this.registerFail(res.data.message);
+                 }
+               })
+               console.log(data);
+               console.log('done');
+             }
+           }
+         }
+       }
+     },
    }
 }
 </script>
@@ -97,5 +177,17 @@ import IeButton from 'components/IeButton'
   text-align: center;
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
+}
+.tips_register{
+  font-size: 17px;
+  margin-top: 2rem;
+}
+.tipState_unq
+{
+  color: #dc3545;
+}
+.tipState_pas
+{
+  color: #00FF00;
 }
 </style>

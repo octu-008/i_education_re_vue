@@ -12,7 +12,7 @@ export default {
         let userInfo = res.data;
         return new Promise((resolve) => {
           commit('userOlUpdate',{userInfo});
-          resolve();
+          resolve(userInfo.type);
         });
       }
     });

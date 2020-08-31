@@ -1,10 +1,4 @@
-.item_edge{
-  display: -ms-flexbox;
-  display: flex;
 
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
 .input_control
 {
   display: block;

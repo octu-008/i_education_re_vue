@@ -6,7 +6,7 @@
         <slot name="img"></slot>
       </div>
     </div>
-    <input class="input_control" :type="groupType" :placeholder="groupPlaceholder" v-model="groupValue">
+    <b-input :type="groupType" :placeholder="groupPlaceholder" v-model="groupValue"></b-input>
   </div>
 </template>
 
@@ -38,7 +38,13 @@ export default {
 </script>
 
 <style>
-@import '~assets/css/input.css';
+.item_edge{
+  display: -ms-flexbox;
+  display: flex;
+
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
 .packing{
   width: 25px;
   height: 25px;

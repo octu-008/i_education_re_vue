@@ -10,24 +10,20 @@
     <i slot="img" class="fa fa-lock" style="font-size: 25px"></i>
   </input-with-img>
   <div class="center_div">
-    <div class="div_radio">
-      <input class="div_check_input" type="radio" value="1" v-model="type">
-      <label class="div_check_label">学生</label>
-    </div>
-    <div class="div_radio">
-      <input class="div_check_input" type="radio" value="2" v-model="type">
-      <label class="div_check_label">教师</label>
-    </div>
+    <b-form-group>
+      <b-form-radio-group>
+        <b-form-radio v-model="type" value="1">学生</b-form-radio>
+        <b-form-radio v-model="type" value="2">教师</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
   </div>
   <ie-hr></ie-hr>
   <div class="center_div">
-    <ie-button type="btn-success" :signal="loginSubmit" @loginsubmitsignal="submit">
-      <i class="fa fa-plus-circle" style="margin-right : 1rem; font-size: 20px"></i>
-      <label style="font-size : 23px">登录</label>
+    <ie-button buttonType="success" :signal="loginSubmit" @loginsubmitsignal="submit" style="font-size : 23px">
+      <i class="fa fa-plus-circle" style="margin-right : 0.5rem; font-size: 20px"></i>登录
     </ie-button>
-    <ie-button type="btn-primary"  :signal="toRegister" @toregistersignal="toRegisterPage">
-      <label style="font-size : 23px">注册</label>
-      <i class="	fa fa-arrow-circle-right" style="margin-left : 1rem; font-size: 20px"></i>
+    <ie-button buttonType="primary"  :signal="toRegister" @toregistersignal="toRegisterPage" style="font-size : 23px">
+      注册<i class="fa fa-arrow-circle-right" style="margin-left : 0.5rem; font-size: 20px"></i>
     </ie-button>
   </div>
   <div class="tips_login">
@@ -50,12 +46,13 @@ import IeHr from 'components/IeHr'
        },
        loginSubmit: 'loginsubmitsignal',
        toRegister: 'toregistersignal',
-       tipForLogin: '*若您还没有账号，可以点击进行注册*'
+       tipForLogin: ''
      }
    },
    methods:{
      submit()
      {
+       this.tipForLogin = '';
        if(this.$refs.phone.groupValue.length < 1)
        {
          this.tipForLogin = '*请正确输入账号*';
@@ -83,8 +80,11 @@ import IeHr from 'components/IeHr'
                  url: '/useronline/'+this.$refs.phone.groupValue,
                  method: 'POST'
                }
-               this.$store.dispatch('onlineStateUpdate',{config}).then( () =>{
-                 this.$router.push('/IEducation/main_s');
+               this.$store.dispatch('onlineStateUpdate',{config}).then( (type) =>{
+                 if(type == 1)
+                 {
+                   this.$router.push('/IEducation/main_s');
+                 }
                });
              }
            });

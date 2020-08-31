@@ -1,8 +1,9 @@
 <template>
 <div :class="groupMargin">
  <div class="item_edge" :class="groupMargin">
-  <input class="input_control i_c_l" v-model="groupValue" 
-  :type="groupType" :placeholder="groupPlaceholder" @keyup="inputKeyUpCheck()">
+  <b-input class="i_c_l" v-model="groupValue" 
+  :type="groupType" :placeholder="groupPlaceholder" @keyup.native="inputKeyUpCheck()">
+  </b-input>
  </div>
  <label :class="labelCheck">{{tipsText}}</label>
 </div>
@@ -104,9 +105,15 @@
 }
 </script>
 <style scoped>
-@import '~assets/css/input.css';
 .normal{
   color: #6c757d;
+}
+.item_edge{
+  display: -ms-flexbox;
+  display: flex;
+
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 .unqualified{
   color:#dc3545;
