@@ -46,7 +46,7 @@
         <i class="ml-1 fa fa-arrow-circle-right"></i></b-button>
     </div>
     <div>
-    <b-modal id="modal_confirm" hide-footer title="请确认生成信息" v-model="practiveConfirmDialog" no-close-on-backdrop="true">
+    <b-modal id="modal_confirm" hide-footer title="请确认生成信息" v-model="practiveConfirmDialog" :no-close-on-backdrop="modalBackDrop">
       <div class="text-center">
         <div class="row">
           <div class="col text-center">
@@ -58,7 +58,8 @@
           <b-button variant="outline-danger" @click="practiveConfirmDialog = false" style="font-size: 23px">
              等等，未确认
           </b-button>
-          <ie-button buttonType="primary" :signal="toPractive" @toPractiveSignal="toPractivePage" style="font-size: 23px" :disabled="disabledButton">
+          <ie-button buttonType="primary" :signal="toPractive" @toPractiveSignal="toPractivePage" 
+          style="font-size: 23px" :disabled="disabledButton">
             是的，已确认
           </ie-button>
         </div>
@@ -84,7 +85,8 @@ import IeButton from 'components/IeButton'
        rfp_number: 0,
        eachScore: 0,
        tipsType: 'normal',
-       disabledButton: 'disabled'
+       modalBackDrop: true,
+       disabledButton: true
      }
    },
    components: {
@@ -99,20 +101,35 @@ import IeButton from 'components/IeButton'
          if(this.eachScore > 0)
          {
            this.tipsType = 'pass';
-           this.disabledButton ='';
+           this.tipsForRFP = '*确定以当前参数生成练习*'
+           this.disabledButton = false;
          }
          else{
           this.tipsType = 'unqualified';
+          this.tipsForRFP = '*请设置题目分数（至少大于0分/题）*'
+          this.disabledButton = true;
          }
        }
        else{
          this.tipsType = 'unqualified';
+         this.tipsForRFP = '*请设置题目数量（至少大于0题）*'
+         this.disabledButton = true;
        }
      }
      ,
      toPractivePage()
      {
-
+       let data = {
+         pType: this.type,
+         pTime: this.time,
+         pNumber: parseInt(this.rfp_number),
+         pEachScore: parseInt(this.eachScore)
+       };
+       console.log(data);
+       this.$router.push({
+         name: 'Practive',
+         params: data
+       });
      }
    }
 }
