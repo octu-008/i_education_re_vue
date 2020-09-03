@@ -1,4 +1,5 @@
 <template>
+<!-- 学生用户主页，可以在此跳转到练习参数设置页面 -->
 <ie-main-page-box>
   <h1 class="ml-2 mt-2 mb-2" slot="mainPageTitle">首页</h1>
   <div slot="mainPageContent">
@@ -24,6 +25,7 @@ import IeButton from 'components/IeButton'
      IeButton,IeMainPageBox
    },
    methods: {
+     //前往练习参数设置页面
      toPracticePage()
      {
        this.$router.push('/IEducation/readyForPractive');

@@ -1,8 +1,9 @@
 <template>
+<!-- 带图标的<input>输入框 -->
   <div class="item_edge" :style="groupMargin">
     <div class="form_label">
       <div class="packing">
-<!--         图片插槽，25px X 25px -->
+<!-- 图片插槽，25px X 25px -->
         <slot name="img"></slot>
       </div>
     </div>

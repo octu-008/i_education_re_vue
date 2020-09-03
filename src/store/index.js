@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    //当用户成功登录时，存储用户的登录信息
     userOnline:{
       id:'-1',
       phone:'',

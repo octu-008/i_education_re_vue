@@ -1,4 +1,7 @@
 <template>
+<!-- 带有输入内容长度提示提示的输入框 -->
+<!-- 可以自动检查是否输入框内容长度是否符合设定值 -->
+<!-- 并返回输入框的value以及输入是否合格的布尔值 -->
 <div :class="groupMargin">
  <div class="item_edge" :class="groupMargin">
   <b-input class="i_c_l" v-model="groupValue" 

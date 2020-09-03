@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- 练习参数选择页面 -->
   <ie-form-box>
     <h4 class="text-center text-dark mt-2 mb-4">选择练习题目生成条件</h4>
     <ie-hr></ie-hr>

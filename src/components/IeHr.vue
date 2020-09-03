@@ -1,4 +1,5 @@
 <template>
+<!-- 自定义水平线 -->
 <hr>
 </template>
 <script>

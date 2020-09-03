@@ -1,6 +1,9 @@
 <template>
+<!-- 登录主页 -->
 <div class="main_div">
+<!-- 主页展示区域（暂无内容） -->
   <div class="pre_div"></div>
+<!-- 登录表单区域 -->
   <login-box></login-box>
 </div>
 </template>

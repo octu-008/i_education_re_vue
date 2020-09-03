@@ -1,4 +1,5 @@
 <template>
+<!-- 登录页面-登录表单盒子 -->
 <ie-form-box>
   <div :class="content_group" class="login_tittle">
     <label>请登录</label>
@@ -42,7 +43,7 @@ import IeHr from 'components/IeHr'
      return {
        type: 1,
        content_group:{
-           marginBottom: '1.5rem',
+         marginBottom: '1.5rem',
        },
        loginSubmit: 'loginsubmitsignal',
        toRegister: 'toregistersignal',
@@ -50,9 +51,11 @@ import IeHr from 'components/IeHr'
      }
    },
    methods:{
+     //提交登录表单
      submit()
      {
        this.tipForLogin = '';
+       //检测输入是否为空
        if(this.$refs.phone.groupValue.length < 1)
        {
          this.tipForLogin = '*请正确输入账号*';
@@ -63,6 +66,7 @@ import IeHr from 'components/IeHr'
            this.tipForLogin = '*请正确输入密码*';
          }
          else{
+           //输入内容合格，准备发送登录请求
            let config ={
              url: '/login',
              method: 'POST',
@@ -70,17 +74,21 @@ import IeHr from 'components/IeHr'
                    '&password='+this.$refs.password.groupValue+
                    '&type='+this.type,
            };
+           //发送登录验证请求
            this.$store.dispatch('loginRequest',{config}).then( res =>{
              if(res.data.code == 100)
              {
+               //登录验证失败，提示登录信息
                this.tipForLogin ='*'+ res.data.message + '*';
              }
              else{
+               //登录验证成功，发送获取用户账号信息请求
                config = {
                  url: '/useronline/'+this.$refs.phone.groupValue,
                  method: 'POST'
                }
                this.$store.dispatch('onlineStateUpdate',{config}).then( (type) =>{
+                 //更新vuex中的state信息，根据用户类型跳转页面
                  if(type == 1)
                  {
                    this.$router.push('/IEducation/main_s');

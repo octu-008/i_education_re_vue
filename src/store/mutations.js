@@ -1,4 +1,5 @@
 export default  {
+  //改变当前的用户登录信息
   userOlUpdate(state,payload)
     {
       state.userOnline.id = payload.userInfo.id

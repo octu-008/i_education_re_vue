@@ -1,4 +1,5 @@
 <template>
+<!-- 基于Bootstrap的自定义表单盒子 -->
 <div class="edge"> 
   <div id="login_form">
     <div id="form_content">

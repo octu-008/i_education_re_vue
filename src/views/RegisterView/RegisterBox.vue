@@ -1,4 +1,5 @@
 <template>
+<!-- 注册表单盒子 -->
 <ie-form-box>
   <div :class="content_group" class="register_tittle">
     <label>请输入以下注册信息</label>
@@ -58,25 +59,34 @@ import request from 'network/request.js'
    name: 'RegisterBox',
    data() {
      return {
-       type:1,
+       //用户类型
+      type:1,
+      //内容边距
       content_group:{
         marginBottom: '1.3rem',
       },
+      //设置手机号码长度限制
       phoneLimitLength:{
         max: 11,
         min: 11
       },
+      //设置账号密码长度限制
       passwordLimitLength:{
         max: 16,
         min: 4
       },
+      //设置用户名长度限制
       usernameLimitLength:{
         max: 25,
         min: 1
       },
+      //自定义提交注册信息信号
       registerSubmit: 'registersubmitsignal',
+      //注册信息确认弹窗
       registerConfirmDialog: false,
+      //注册信息提示
       tipsForRegister: '',
+      //注册信息提示样式
       tipsState: 'tipState_unq'
      }
    },
@@ -188,6 +198,6 @@ import request from 'network/request.js'
 }
 .tipState_pas
 {
-  color: #00FF00;
+  color: #28a745;
 }
 </style>

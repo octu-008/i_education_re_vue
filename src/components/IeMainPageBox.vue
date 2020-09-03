@@ -1,4 +1,5 @@
 <template>
+<!-- 基于BootstrapVue的自定义主页盒子 -->
 <div class="my-2">
   <div class="row">
     <div class="main_form shadow border-bottom">

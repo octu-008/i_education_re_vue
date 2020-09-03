@@ -26,7 +26,8 @@
          baseState: 'fa-question-circle',
          spin: ''
        },
-       optionCheck : false
+       optionCheck: false,
+       afterCommit: false
      }
    },
    computed:{
@@ -38,7 +39,7 @@
    methods: {
      reverseColor()
      {
-       if(!this.optionCheck)
+       if((!this.optionCheck) && (!this.afterCommit))
        {
        let temp = this.options_state['color'];
        this.options_state['color'] = this.options_state['background-color'];
@@ -48,21 +49,46 @@
      },
      reverseCheck()
      {
-       this.optionCheck = (this.optionCheck) ? false : true;
-       this.options_state['color'] = '#fff';
-       this.options_state['background-color'] = (this.optionCheck) ? '#28a745' : '#343a40';
-       this.iconState.baseState = (this.optionCheck) ? 'fa-check-circle' : 'fa-question-circle';
-       this.iconState.spin = (this.optionCheck) ? '' : 'fa-spin';
-       this.$emit(this.signal);
+       if((!this.afterCommit))
+       {
+         this.optionCheck = (this.optionCheck) ? false : true;
+         this.options_state['color'] = '#fff';
+         this.options_state['background-color'] = (this.optionCheck) ? '#28a745' : '#343a40';
+         this.iconState.baseState = (this.optionCheck) ? 'fa-check-circle' : 'fa-question-circle';
+         this.iconState.spin = (this.optionCheck) ? '' : 'fa-spin';
+         this.$emit(this.signal);
+       }
      },
      reverseByFa()
      {
-       if(this.optionCheck)
+       if(this.optionCheck && (!this.afterCommit))
        {
          this.optionCheck = false;
          this.options_state['color'] = '#343a40';
          this.options_state['background-color'] = '#fff';
          this.iconState.baseState = 'fa-question-circle';
+         this.iconState.spin = '';
+       }
+     },
+     practiveCommit(type)
+     {
+       this.afterCommit = true;
+       if(type == 'error')
+       {
+         this.options_state['color'] = '#fff';
+         this.options_state['background-color'] = '#dc3545';
+         this.iconState.baseState = 'fa-times-circle';
+         this.iconState.spin = '';
+       }
+       else if(type == 'answer')
+       {
+         this.options_state['color'] = '#fff';
+         this.options_state['background-color'] = '#28a745';
+         this.iconState.baseState = 'fa-check-circle';
+         this.iconState.spin = '';
+       }
+       else{
+         this.iconState.baseState = '';
          this.iconState.spin = '';
        }
      }

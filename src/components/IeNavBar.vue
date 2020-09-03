@@ -1,4 +1,5 @@
 <template>
+<!-- 自定义导航栏 -->
 <header>
   <label id="tittle">{{navtittle}}</label>
   <div class="user_info" v-if="loginState">
@@ -11,6 +12,7 @@
  export default {
    name: 'IeNavBar',
    props: {
+     //项目标题
      navtittle: {
        type: String,
        default: 'IEducation'
@@ -18,12 +20,14 @@
    },
    data() {
      return {
+       //用户头像图片路径
        imgPath: this.$store.state.userOnline.imgPath
      }
    },
    computed:{
      loginState()
      {
+       //检测vuex的store中是否有登录中的用户
        return (this.$store.state.userOnline.id > 0)
      }
    }
