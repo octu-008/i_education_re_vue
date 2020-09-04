@@ -5,6 +5,7 @@ function resolve(dir)
 }
 module.exports = {
   devServer:{
+    //跨域请求配置
     proxy: {
       '/api' :{
         target: 'http://localhost:8088/IEducation/',
@@ -15,6 +16,7 @@ module.exports = {
       }
     }
   },
+  //项目内的文件夹路径别名
   chainWebpack: (config) =>{
     config.resolve.alias
     .set('@',resolve('./src'))

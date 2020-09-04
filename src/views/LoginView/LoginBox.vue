@@ -93,12 +93,16 @@ import IeHr from 'components/IeHr'
                  {
                    this.$router.push('/IEducation/main_s');
                  }
+                 else{
+                   this.$router.push('/IEducation/main_t');
+                 }
                });
              }
            });
          }
        }
      },
+     //前往注册页面
      toRegisterPage()
      {
        this.$router.push('/IEducation/register');

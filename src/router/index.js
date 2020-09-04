@@ -3,9 +3,11 @@ import VueRouter from 'vue-router';
 const MainLoginViews = () =>import('views/LoginView/MainLoginViews');
 const MainRegisterViews = () => import('views/RegisterView/MainRegisterViews');
 const MainPageS = () => import('views/MainPageView/MainPageS');
+const MainPageT = () => import('views/MainPageView/MainPageT');
 const ReadyForPractive = () => import('views/ReadyForPracticeView/MainRFPractiveView');
 const MainPractiveView = () => import('views/PractiveVIews/MainPractiveView');
 const MainNQuestion = () => import('views/NewQuestionView/MainNQuestion');
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -32,6 +34,11 @@ Vue.use(VueRouter)
       path: '/IEducation/main_s',
       name: 'MainPageS',
       component: MainPageS
+    },
+    {
+      path: '/IEducation/main_t',
+      name: 'MainPageT',
+      component: MainPageT
     },
     {
       //练习参数设置页面

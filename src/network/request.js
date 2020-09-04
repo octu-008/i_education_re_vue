@@ -3,6 +3,8 @@ import axios from 'axios';
 export default function request(config)
 {
   const instance = axios.create({
+    //由于进行前端重置时，使用的依旧是旧项目中的api
+    //在vue.config.js中有关跨域的配置
     baseURL: '/api'
   });
   return instance(config);

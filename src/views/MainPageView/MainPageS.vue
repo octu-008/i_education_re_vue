@@ -1,7 +1,7 @@
 <template>
 <!-- 学生用户主页，可以在此跳转到练习参数设置页面 -->
 <ie-main-page-box>
-  <h1 class="ml-2 mt-2 mb-2" slot="mainPageTitle">首页</h1>
+  <h1 class="ml-2 mt-2 mb-2" slot="mainPageTitle">学生首页</h1>
   <div slot="mainPageContent">
     <ie-button buttonType="primary" :signal="toPractice" @toPracticeSignal="toPracticePage">
       <label style="font-size: 23px">前往题目练习

@@ -290,6 +290,7 @@ import request from 'network/request'
        }
        this.calculationCommit =true;
      },
+     //点击淡出/淡入回答详情
      showCommitQuestionDetail(){
        if(this.practive_content_toggle)
        {

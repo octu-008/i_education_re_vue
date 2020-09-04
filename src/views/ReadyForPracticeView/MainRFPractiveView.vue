@@ -78,15 +78,25 @@ import IeButton from 'components/IeButton'
    name: 'MainRFPractiveView',
    data() {
      return {
+       //课程范围
        type: 'all',
+       //时间限制
        time: 'noLimit',
+       //练习参数确认弹窗
        practiveConfirmDialog: false,
+       //前往自动生成练习的页面
        toPractive: 'toPractiveSignal',
+       //参数选择确认提示
        tipsForRFP: '*确定生成练习*',
+       //题目数量
        rfp_number: 0,
+       //每题分数
        eachScore: 0,
+       //提示样式       
        tipsType: 'normal',
+       //点击弹窗以外弹窗不消失
        modalBackDrop: true,
+       //确认按钮无效化
        disabledButton: true
      }
    },
@@ -94,6 +104,7 @@ import IeButton from 'components/IeButton'
      IeFormBox,IeHr,IeButton
    },
    methods: {
+     //弹窗提示信息
      confirm_rfp_info()
      {
        this.practiveConfirmDialog = true;
@@ -118,6 +129,7 @@ import IeButton from 'components/IeButton'
        }
      }
      ,
+     //通过props向组件提供自动生成题目的参数
      toPractivePage()
      {
        let data = {
