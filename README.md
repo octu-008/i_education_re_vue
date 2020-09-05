@@ -6,7 +6,7 @@
 - **开发工具**：Visual Studio Code
 - **数据库**：MySQL
 - **相关技术**：Vue.js，Bootstrap-Vue，SpringBoot整合SSM
-## 重置的功能
+## 重制的功能
 - 所有用户-登录功能-相关组件：[登录表单组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/LoginView/LoginBox.vue)
 - 所有用户-注册功能-相关组件：[注册表单组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/RegisterView/RegisterBox.vue)
 - 学生用户-动态生成练习测试并自动判卷-相关组件：[练习参数选择组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/ReadyForPracticeView/MainRFPractiveView.vue)，[自动判卷题目练习组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/PractiveVIews/MainPractiveView.vue)
