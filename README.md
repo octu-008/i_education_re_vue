@@ -1,4 +1,40 @@
-# i_education_re_vue————旧项目-智能教育系统-前端Vuejs重置版
-###### 正在进行中...
+# i_education_re_vue————前端Vuejs重制版-大三JEE程序设计项目-智能教育系统
+###### 截止时间:2020-09-05（仅对主要负责内容进行了重置）
 ## 摘要
 该项目为[大三JEE程序设计项目-智能教育系统](https://github.com/octu-008/junior_project_intelligent_education_system)前端部分的重置版本，利用所学的vue框架及其相关技术将前端内容进行了开发。
+## 开发配置环境
+- **开发工具**：Visual Studio Code
+- **数据库**：MySQL
+- **相关技术**：Vue.js，Bootstrap-Vue，SpringBoot整合SSM
+## 重置的功能
+- 所有用户-登录功能-相关组件：[登录表单组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/LoginView/LoginBox.vue)
+- 所有用户-注册功能-相关组件：[注册表单组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/RegisterView/RegisterBox.vue)
+- 学生用户-动态生成练习测试并自动判卷-相关组件：[练习参数选择组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/ReadyForPracticeView/MainRFPractiveView.vue)，[自动判卷题目练习组件](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/PractiveVIews/MainPractiveView.vue)
+- 教师用户-新增练习题功能-相关组件：[新增题目表单](https://github.com/octu-008/i_education_re_vue/blob/master/src/views/NewQuestionView/MainNQuestion.vue)
+## Vuejs重制版的主要变化
+### 在原项目的基础上自定义了通用的组件  
+- [自定义组件](https://github.com/octu-008/i_education_re_vue/tree/master/src/components)
+  - [按钮](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeButton.vue)
+  - [双色标签](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeDouColorLabel.vue)
+  - [表单盒子](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeFormBox.vue)
+  - [水平线](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeHr.vue)
+  - [主页盒子](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeMainPageBox.vue)
+  - [导航栏](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeNavBar.vue)
+  - [题目选项盒子](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeOptionBox.vue)
+  - [新增题目选项内容输入表单](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeOptionInputBox.vue)
+  - [练习内容盒子](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IePractiveBox.vue)
+  - [自动判分题目](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/IeQuestionBox.vue)
+  - [带图标的输入框](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/InputWithImg.vue)
+  - [带有输入限制的输入框](https://github.com/octu-008/i_education_re_vue/blob/master/src/components/InputWithLimited.vue)
+### 使用VueRouter构建单页面应用，并且实现了路由组件传参  
+- 在这部分中利用VueRouter的特性，将旧项目中的页面转换为了Vue组件。
+- [视图目录](https://github.com/octu-008/i_education_re_vue/tree/master/src/views)  
+- [配置文件](https://github.com/octu-008/i_education_re_vue/blob/master/src/router/index.js)
+### 使用Vuex存储用户登录信息  
+- 在这部分中，在store的state中存储了用户的登录信息，并定义了相关的[action](https://github.com/octu-008/i_education_re_vue/blob/master/src/store/actions.js)方法从服务端请求数据和[mutation](https://github.com/octu-008/i_education_re_vue/blob/master/src/store/mutations.js)方法实现state的更新。
+- [配置文件](https://github.com/octu-008/i_education_re_vue/blob/master/src/store/index.js)
+### 利用axios实现异步向服务端发送请求  
+- [请求模块文件](https://github.com/octu-008/i_education_re_vue/blob/master/src/network/request.js)
+- 项目中在具体发送请求时，引入该模块并根据具体需求传入请求配置。
+### 使用了BootStrapVue代替了旧项目中的相关样式内容
+- 在使用BootstrapVue的过程中，发现不仅可以使用它提供的组件，也可以在[入口](https://github.com/octu-008/i_education_re_vue/blob/master/src/main.js)引入css文件后，像使用Bootstrap原版一样使用相关样式设计页面。
