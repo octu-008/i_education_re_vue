@@ -1,7 +1,7 @@
 # i_education_re_vue————前端Vuejs重制版-大三JEE程序设计项目-智能教育系统
-###### 截止时间:2020-09-05（仅对主要负责内容进行了重置）
+###### 截止时间:2020-09-05（仅对主要负责内容进行了重制）
 ## 摘要
-该项目为[大三JEE程序设计项目-智能教育系统](https://github.com/octu-008/junior_project_intelligent_education_system)前端部分的重置版本，利用所学的vue框架及其相关技术将前端内容进行了开发。
+该项目为[大三JEE程序设计项目-智能教育系统](https://github.com/octu-008/junior_project_intelligent_education_system)前端部分的重制版本，利用所学的vue框架及其相关技术将前端内容进行了开发。
 ## 开发配置环境
 - **开发工具**：Visual Studio Code
 - **数据库**：MySQL
