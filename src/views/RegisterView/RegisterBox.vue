@@ -156,8 +156,6 @@ import request from 'network/request.js'
                    this.registerFail(res.data.message);
                  }
                })
-               console.log(data);
-               console.log('done');
              }
            }
          }

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+//懒加载
 const MainLoginViews = () =>import('views/LoginView/MainLoginViews');
 const MainRegisterViews = () => import('views/RegisterView/MainRegisterViews');
 const MainPageS = () => import('views/MainPageView/MainPageS');
@@ -14,6 +15,11 @@ Vue.use(VueRouter)
     {
       //默认跳转至登录页面
       path: '',
+      redirect: '/IEducation/login'
+    },
+    {
+      //默认跳转至登录页面
+      path: '/IEducation/',
       redirect: '/IEducation/login'
     },
     {
